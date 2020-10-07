@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EdicaoEventoRepository extends CrudRepository<EdicaoEvento, Integer> {
 
+    <S extends EdicaoEvento> S save(S e);
+
 }

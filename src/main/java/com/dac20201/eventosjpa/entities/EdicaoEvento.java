@@ -11,6 +11,21 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class EdicaoEvento {
+
+    public EdicaoEvento() {
+    }
+
+    public EdicaoEvento(Evento evento, String numero, String ano, Date dataInicio, Date datafim, String cidadeSede,
+            String estado) {
+        this.evento = evento;
+        this.numero = numero;
+        this.ano = ano;
+        this.dataInicio = dataInicio;
+        this.datafim = datafim;
+        this.estado = estado;
+        this.cidadeSede = cidadeSede;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
@@ -24,6 +39,10 @@ public class EdicaoEvento {
     private Date datafim;
     private String cidadeSede;
     private String estado;
+
+    public Integer getId() {
+        return this.Id;
+    }
 
     public Evento getEvento() {
         return this.evento;

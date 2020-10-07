@@ -1,5 +1,6 @@
 package com.dac20201.eventosjpa.controllers;
 
+import com.dac20201.eventosjpa.EdicaoEventoRepository;
 import com.dac20201.eventosjpa.EventoRepository;
 import com.dac20201.eventosjpa.entities.Evento;
 
@@ -19,6 +20,8 @@ public class EventoController {
 
     @Autowired
     private EventoRepository repository;
+    @Autowired
+    private EdicaoEventoRepository edicaoEventoRepository;
 
     @GetMapping("/index")
     public String eventosIndex(Model modelo) {
@@ -48,5 +51,11 @@ public class EventoController {
         modelo.addAttribute("nome", evento.getNome());
         modelo.addAttribute("evento", evento);
         return "EventosTemplates/evento";
+    }
+
+    @GetMapping("/excluir/{id}")
+    public RedirectView excluirEventoEdicoes(@PathVariable("id") Integer id) {
+        return new RedirectView();
+
     }
 }

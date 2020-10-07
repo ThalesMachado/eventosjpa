@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nova Edição do Evento</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <h1>Nova Edição do Evento</h1>
+
+    <form action="/edicaoevento/criar" method="POST">
+        <label for="numero">Número</label>
+        <input name="numero" type="number" /><br />
+        <label for="ano">Ano do Evento</label>
+        <input name="ano" type="text" /><br />
+        <label for="dataInicio">Data de Início</label>
+        <input name="dataInicio" type="date" /><br />
+        <label for="datafim">Data Final</label>
+        <input name="datafim" type="date" /><br />
+        <label for="cidadeSede">Cidade Sede</label>
+        <input name="cidadeSede" type="text" /><br />
+        <label for="estado">Unidade Federativa</label>
+        <select name="estado">
+            <option value="Acre">Acre</option>
+            <option value="Alagoas">Alagoas</option>
+            <option value="Amapá">Amapá</option>
+            <option value="Amazonas">Amazonas</option>
+            <option value="Bahia">Bahia</option>
+            <option value="Ceará">Ceará</option>
+            <option value="Distrito Federal">Distrito Federal</option>
+            <option value="Espírito Santo">Espírito Santo</option>
+            <option value="Goiás">Goiás</option>
+            <option value="Maranhão">Maranhão</option>
+            <option value="Mato Grosso">Mato Grosso</option>
+            <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+            <option value="Minas Gerais">Minas Gerais</option>
+            <option value="Pará">Pará</option>
+            <option value="Paraíba">Paraíba</option>
+            <option value="Paraná">Paraná</option>
+            <option value="Pernambuco">Pernambuco</option>
+            <option value="Piauí">Piauí</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+            <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+            <option value="Rondônia">Rondônia</option>
+            <option value="Roraima">Roraima</option>
+            <option value="Santa Catarina">Santa Catarina</option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Sergipe">Sergipe</option>
+            <option value="Tocantins">Tocantins</option>
+        </select><br>
+        <label for="evento">Evento</label>
+        <select name="evento">
+            <option th:each="evento : ${eventos}" th:value="${evento.Id}" th:text="${evento.nome}" />
+        </select><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script src="" async defer></script>
+</body>
+
+</html>

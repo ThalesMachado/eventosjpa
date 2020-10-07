@@ -1,7 +1,5 @@
 package com.dac20201.eventosjpa;
 
-import java.util.List;
-
 import com.dac20201.eventosjpa.entities.Evento;
 
 import org.springframework.data.repository.CrudRepository;
