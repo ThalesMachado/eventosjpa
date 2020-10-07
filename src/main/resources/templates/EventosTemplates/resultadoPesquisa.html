@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edições de Eventos</title>
+    <title>Resultado</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
@@ -19,30 +19,33 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+    <h1>Resultados da Pesquisa</h1>
+    <br>
+
+    <form method="GET" action="/evento/busca">
+        <label for="termo">Busca Pelo Nome</label>
+        <input type="text" name="termo" />
+        <input type="submit" value="Perquisar" />
+    </form>
+    <br>
+
     <table>
         <tr>
-            <th>Número</th>
-            <th>Ano</th>
-            <th>Data de Início</th>
-            <th>Data Fim</th>
-            <th>Cidade Sede</th>
-            <th>Estado</th>
-            <th>Nome do Evento</th>
+            <th>Nome</th>
+            <th>Sigla</th>
+            <th>Área de Concentação</th>
+            <th>Instituição Organizadora</th>
         </tr>
-        <tr th:each="edicao: ${edicoes}">
-            <td><a th:text="${edicao.numero}" th:href="${edicao.Id}" /></td>
-            <td th:text="${edicao.ano}" />
-            <td th:text="${edicao.dataInicio}" />
-            <td th:text="${edicao.datafim}" />
-            <td th:text="${edicao.cidadeSede}" />
-            <td th:text="${edicao.estado}" />
-            <td th:text="${edicao.nomeEvento}" />
+        <tr th:each="evento: ${eventos}">
+            <td><a th:text="${evento.nome}" th:href="${evento.Id}" /></td>
+            <td th:text="${evento.sigla}" />
+            <td th:text="${evento.areaConcentracao}" />
+            <td th:text="${evento.instituicaoOrganizadora}" />
         </tr>
     </table>
     <br>
-
-    <button><a href="novo/"> Criar Nova Edição de Envento</a></button><br>
-    <button><a href="/"> Voltar</a></button><br>
+    <button><a href="novo/">Criar Novo Evento</a></button><br>
+    <button><a href="index/">Voltar</a></button><br>
 
     <script src="" async defer></script>
 </body>

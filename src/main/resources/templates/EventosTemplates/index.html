@@ -18,6 +18,15 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <h1>Eventos</h1>
+    <br>
+
+    <form method="GET" action="/evento/busca">
+        <label for="termo">Busca Pelo Nome</label>
+        <input type="text" name="termo" />
+        <input type="submit" value="Perquisar" />
+    </form>
+    <br>
 
     <table>
         <tr>
@@ -27,12 +36,15 @@
             <th>Instituição Organizadora</th>
         </tr>
         <tr th:each="evento: ${eventos}">
-            <td th:text="${evento.nome}" />
+            <td><a th:text="${evento.nome}" th:href="${evento.Id}" /></td>
             <td th:text="${evento.sigla}" />
             <td th:text="${evento.areaConcentracao}" />
             <td th:text="${evento.instituicaoOrganizadora}" />
         </tr>
     </table>
+    <br>
+    <button><a href="novo/">Criar Novo Evento</a></button><br>
+    <button><a href="/">Voltar</a></button><br>
 </body>
 
 </html>

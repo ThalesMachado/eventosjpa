@@ -33,15 +33,45 @@
             <th>Sigla</th>
             <th>Área de Concentação</th>
             <th>Instituição Organizadora</th>
+            <th>Excluir</th>
         </tr>
         <tr th:each="evento: ${evento}">
             <td th:text="${evento.nome}" />
             <td th:text="${evento.sigla}" />
             <td th:text="${evento.areaConcentracao}" />
             <td th:text="${evento.instituicaoOrganizadora}" />
+            <td> <button><a th:text="'Excluir'" th:href="@{excluir/{id}(id=${evento.Id})}" /></button> </td>
         </tr>
     </table>
-    <script src="" async defer></script>
+    <br>
+
+    <h1 th:if="${edicoes}">Edições</h1>
+    <br>
+    <table th:if="${edicoes}">
+        <tr>
+            <th>Número</th>
+            <th>Ano</th>
+            <th>Data de Início</th>
+            <th>Data Fim</th>
+            <th>Cidade Sede</th>
+            <th>Estado</th>
+            <th>Excluir</th>
+        </tr>
+        <tr th:each="edicao: ${edicoes}">
+            <td><a th:text="${edicao.numero}" th:href="@{/edicaoevento/{id}(id=${edicao.Id})}" /></td>
+            <td th:text="${edicao.ano}" />
+            <td th:text="${edicao.dataInicio}" />
+            <td th:text="${edicao.datafim}" />
+            <td th:text="${edicao.cidadeSede}" />
+            <td th:text="${edicao.estado}" />
+            <td> <button><a th:text="'Excluir'" th:href="@{/edicaoevento/excluir/{id}(id=${edicao.Id})}" /></button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button><a href="index">Voltar</a></button><br>
+    <script src="" async defer>
+    </script>
 </body>
 
 </html>

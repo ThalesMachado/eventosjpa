@@ -18,6 +18,8 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <h1>Edições dos Eventos</h1>
+    <br>
     <table>
         <tr>
             <th>Número</th>
@@ -36,15 +38,13 @@
             <td th:text="${edicao.datafim}" />
             <td th:text="${edicao.cidadeSede}" />
             <td th:text="${edicao.estado}" />
-            <td th:text="${edicao.nomeEvento}" />
-            <td> <button th:value="${edicao.Id}" onclick="excluir(event)">Excluir</button> </td>
+            <td><a th:text="${edicao.nomeEvento}" th:href="@{/evento/{id}(id=${edicao.eventoId})}" /></td>
+            <td> <button><a th:text="'Excluir'" th:href="@{excluir/{id}(id=${edicao.Id})}" /></button> </td>
         </tr>
     </table>
+    <br>
+    <button><a href="index">Voltar</a></button><br>
     <script type="text/javascript" async defer>
-        function excluir(e) {
-            const id = e.target.value
-            window.location.href = `/edicaoevento/excluir/${id}`
-        }
     </script>
 </body>
 

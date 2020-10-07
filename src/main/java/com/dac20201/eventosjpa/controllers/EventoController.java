@@ -1,8 +1,11 @@
 package com.dac20201.eventosjpa.controllers;
 
-import com.dac20201.eventosjpa.EdicaoEventoRepository;
-import com.dac20201.eventosjpa.EventoRepository;
+import java.util.List;
+
+import com.dac20201.eventosjpa.repositories.EdicaoEventoRepository;
+import com.dac20201.eventosjpa.repositories.EventoRepository;
 import com.dac20201.eventosjpa.entities.Evento;
+import com.dac20201.eventosjpa.entities.EdicaoEvento;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +26,7 @@ public class EventoController {
     @Autowired
     private EdicaoEventoRepository edicaoEventoRepository;
 
-    @GetMapping("/index")
+    @RequestMapping(value = { "/index", "" })
     public String eventosIndex(Model modelo) {
         Iterable<Evento> lstEventos = repository.findAll();
         modelo.addAttribute("eventos", lstEventos);
@@ -48,14 +51,31 @@ public class EventoController {
     @GetMapping("/{id}")
     public String evento(@PathVariable("id") Integer id, Model modelo) {
         Evento evento = repository.findById(id).get();
+        List<EdicaoEvento> edicoes = edicaoEventoRepository.findByEvento(evento);
+        if (!edicoes.isEmpty())
+            modelo.addAttribute("edicoes", edicoes);
         modelo.addAttribute("nome", evento.getNome());
         modelo.addAttribute("evento", evento);
         return "EventosTemplates/evento";
     }
 
-    @GetMapping("/excluir/{id}")
+    @GetMapping("excluir/{id}")
     public RedirectView excluirEventoEdicoes(@PathVariable("id") Integer id) {
-        return new RedirectView();
+        Evento evento = repository.findById(id).get();
+        List<EdicaoEvento> edicoes = edicaoEventoRepository.findByEvento(evento);
+        if (edicoes.size() > 0)
+            edicaoEventoRepository.deleteAll(edicoes);
+        repository.delete(evento);
+
+        return new RedirectView("/");
 
     }
+
+    @GetMapping(value = "busca")
+    public String getMethodName(@RequestParam("termo") String termo, Model modelo) {
+        List<Evento> eventos = repository.findByNomeContaining(termo);
+        modelo.addAttribute("eventos", eventos);
+        return "EventosTemplates/resultadoPesquisa";
+    }
+
 }
