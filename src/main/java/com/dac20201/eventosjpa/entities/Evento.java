@@ -19,6 +19,14 @@ public class Evento {
         this.instituicaoOrganizadora = instituicaoOrganizadora;
     }
 
+    public Evento(Integer id, String nome, String sigla, String areaConcentracao, String instituicaoOrganizadora) {
+        this.Id = id;
+        this.nome = nome;
+        this.sigla = sigla;
+        this.areaConcentracao = areaConcentracao;
+        this.instituicaoOrganizadora = instituicaoOrganizadora;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer Id;
@@ -47,6 +55,22 @@ public class Evento {
 
     public String getInstituicaoOrganizadora() {
         return this.instituicaoOrganizadora;
+    }
+
+    public void setAreaConcentracao(String areaConcentracao) {
+        this.areaConcentracao = areaConcentracao;
+    }
+
+    public void setInstituicaoOrganizadora(String instituicaoOrganizadora) {
+        this.instituicaoOrganizadora = instituicaoOrganizadora;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
 }

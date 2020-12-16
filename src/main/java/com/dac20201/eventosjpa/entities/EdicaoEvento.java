@@ -71,4 +71,32 @@ public class EdicaoEvento {
     public String getEstado() {
         return this.estado;
     }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public void setCidadeSede(String cidadeSede) {
+        this.cidadeSede = cidadeSede;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDatafim(Date datafim) {
+        this.datafim = datafim;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 }
